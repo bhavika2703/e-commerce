@@ -45,6 +45,7 @@ class SubCategModel extends StatelessWidget {
             return SubCategProducts(
               subCategName: subCategName,
               mainCategName: mainCategName,
+              assetName:  assetName,
             );
           },
         ));

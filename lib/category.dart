@@ -1,3 +1,4 @@
+import 'package:bhavika_techila_global_services_test/cart.dart';
 import 'package:bhavika_techila_global_services_test/category/bages_category.dart';
 import 'package:bhavika_techila_global_services_test/category/beauty_category.dart';
 import 'package:bhavika_techila_global_services_test/category/electronics_ccategory.dart';
@@ -33,6 +34,7 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
   final PageController _pageController = PageController();
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -58,15 +60,40 @@ class _CategoryScreenState extends State<CategoryScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            sideNavigator(size),
+            topNavigator(size),
             categView(size)
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.black,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+        currentIndex: _selectedIndex,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Category'),
+          BottomNavigationBarItem(icon: Icon(Icons.shop), label: 'Stores'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        onTap: (index) {
+          if(index == 3){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                  const CartScreen(ishomeScreen: true),
+                ));
+          }
+        },
+      ),
     );
   }
 
-  Widget sideNavigator(Size size) {
+  Widget topNavigator(Size size) {
     return SizedBox(
       height: size.height * 0.1,
       width: size.width ,
@@ -84,9 +111,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
             },
             child: Container(
                 color: items[index].isSelected == true
-                    ? Colors.white
+                    ? Colors.purple.shade200
                     : Colors.grey.shade300,
-                width: 100,
+                width: 140,
                 child: Center(child: Text(items[index].label))),
           );
         },

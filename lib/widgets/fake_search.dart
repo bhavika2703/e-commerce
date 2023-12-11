@@ -21,7 +21,7 @@ class _FakeSearchState extends State<FakeSearch> {
       child: Container(
         height: 35,
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.yellow, width: 1.4),
+            border: Border.all(color: Colors.purple.shade100, width: 1.4),
             borderRadius: BorderRadius.circular(25)),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -44,13 +44,13 @@ class _FakeSearchState extends State<FakeSearch> {
             height: 32,
             width: 75,
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              color: Colors.purple.shade100,
               borderRadius: BorderRadius.circular(25),
             ),
             child: const Center(
               child: Text(
                 'Search',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
           )
